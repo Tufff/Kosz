@@ -5,23 +5,37 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    //public static GameObject instance = this;
+    public static GameManager instance = null;
     
     int score = 0;
+    int comboCount = 1;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         score = 0;
+        comboCount = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(score);
+        //Debug.Log("Score: " + score);
+        //Debug.Log(comboCount);
     }
 
-    public void scorePoints(){
-        score += 1;
+    public void ScorePoints(){
+        score += comboCount;
+        comboCount++;
+    }
+
+    public void ResetCombo()
+    {
+        comboCount = 1;
     }
 }

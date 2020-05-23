@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class BallMove : MonoBehaviour
@@ -10,13 +11,9 @@ public class BallMove : MonoBehaviour
     public float autodestructionTime = 5f;
     bool hit = false;
 
-    [SerializeField]
-    GameManager manager;
-
     // Start is called before the first frame update
     void Start()
     {
-        manager = FindObjectOfType<GameManager>();
         rb = GetComponent<Rigidbody>();
         rb.AddForce(0, startForceUp, -startForceFoward, ForceMode.Impulse);
         StartCoroutine(Suicide(autodestructionTime));
@@ -37,19 +34,18 @@ public class BallMove : MonoBehaviour
     void OnCollisionEnter (Collision collider){
         if (collider.gameObject.tag == "Hoop"){
             hit = true;
+            UnityEngine.Debug.Log("collision"); // PROBL3M
+            GameManager.instance.ResetCombo();
         }
-        
     }
 
     void OnTriggerEnter(Collider collider){
         if (collider.tag == "Point"){
-            Debug.Log("Zdobyłem punkt!!");
-            scorePoints();
+            ScorePoints();
         }
     }
 
-    void scorePoints(){
-        Debug.Log("Czy manager coś ma " + (manager!= null));
-            manager.scorePoints();
+    void ScorePoints(){
+            GameManager.instance.ScorePoints();
     }
 }
