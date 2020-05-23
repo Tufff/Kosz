@@ -60,7 +60,7 @@ public class BallSpawner : MonoBehaviour
         for (int i = 0; i < numberOfSingles; i++)
         {
             yield return new WaitForSeconds(time);
-            Instantiate(ball, new Vector3(Random.Range(-screenRange, screenRange), 0f, 0f), Quaternion.identity);
+            SpawnBall(new Vector3(Random.Range(-screenRange, screenRange), 0f, 0f));
         }
         doUlt = true;
     }
@@ -71,10 +71,10 @@ public class BallSpawner : MonoBehaviour
         float position = Random.Range(-screenRange, screenRange);
         for (int i = 0; i < xStrike - 1; i++)
         {
-            Instantiate(ball, new Vector3(position, 0f, 0f), Quaternion.identity);
+            SpawnBall(new Vector3(position, 0f, 0f));
             yield return new WaitForSeconds(time * multi);
         }
-        Instantiate(ball, new Vector3(position, 0f, 0f), Quaternion.identity);
+        SpawnBall(new Vector3(position, 0f, 0f));
 
         if (isEnd) done = true;
     }
@@ -92,15 +92,7 @@ public class BallSpawner : MonoBehaviour
         done = true;
     }
 
-    IEnumerator Trower()
-    {
-        while (true)
-        {
-            if (done)
-            {
-                done = false;
-                
-            }
-        }
+    void SpawnBall(Vector3 position){
+        Instantiate(ball, position, Quaternion.identity);
     }
 }

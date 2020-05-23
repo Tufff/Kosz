@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5858546603066602129}
   - component: {fileID: 5858546603066602128}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,3 +126,4 @@ MonoBehaviour:
   startForceUp: 18
   startForceFoward: 12.8
   autodestructionTime: 4
+  manager: {fileID: 0}
