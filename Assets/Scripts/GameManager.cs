@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,6 +21,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1f;
         score = 0;
         comboCount = 1;
     }
@@ -48,6 +48,6 @@ public class GameManager : MonoBehaviour
     }
 
     public void RestartLevel(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        scrDis.GameOver();
     }
 }
