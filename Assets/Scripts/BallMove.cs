@@ -37,7 +37,6 @@ public class BallMove : MonoBehaviour
         bool gotThisCollision = false;
         if (collider.gameObject.tag == "Hoop" && !gotThisCollision){
             gotThisCollision = true;
-            hit = true;
             GameManager.instance.ResetCombo();
         }
     }

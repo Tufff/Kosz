@@ -7,13 +7,16 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
-    
+
+    ScoreDisplay scrDis;
+
     int score = 0;
     int comboCount = 1;
 
     void Awake()
     {
         instance = this;
+        scrDis = GameObject.FindWithTag("ScoreDisplay").GetComponent<ScoreDisplay>();
     }
 
     // Start is called before the first frame update
@@ -36,6 +39,7 @@ public class GameManager : MonoBehaviour
         if (comboCount > 5){
             comboCount = 5;
         }
+        scrDis.SetScore(score);
     }
 
     public void ResetCombo()
