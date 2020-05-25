@@ -32,7 +32,9 @@ public class BallMove : MonoBehaviour
     }
 
     void OnCollisionEnter (Collision collider){
-        if (collider.gameObject.tag == "Hoop"){
+        bool gotThisCollision = false;
+        if (collider.gameObject.tag == "Hoop" && !gotThisCollision){
+            gotThisCollision = true;
             hit = true;
             UnityEngine.Debug.Log("collision"); // PROBL3M
             GameManager.instance.ResetCombo();
