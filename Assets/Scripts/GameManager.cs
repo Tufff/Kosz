@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -32,10 +33,17 @@ public class GameManager : MonoBehaviour
     public void ScorePoints(){
         score += comboCount;
         comboCount++;
+        if (comboCount > 5){
+            comboCount = 5;
+        }
     }
 
     public void ResetCombo()
     {
         comboCount = 1;
+    }
+
+    public void RestartLevel(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
