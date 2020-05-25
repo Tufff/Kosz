@@ -9,7 +9,7 @@ public class BallMove : MonoBehaviour
     public float startForceUp = 10f;
     public float startForceFoward = 10f;
     public float autodestructionTime = 5f;
-    bool hit = false;
+    bool pointScored = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,9 @@ public class BallMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(transform.position.y < -1f && !pointScored){
+            GameManager.instance.RestartLevel();
+        }
     }
 
     IEnumerator Suicide(float OmaeWaMouShindeiru)
@@ -33,8 +35,7 @@ public class BallMove : MonoBehaviour
 
     void OnCollisionEnter (Collision collider){
         if (collider.gameObject.tag == "Hoop"){
-            hit = true;
-            UnityEngine.Debug.Log("collision"); // PROBL3M
+            //UnityEngine.Debug.Log("collision"); // PROBL3M
             GameManager.instance.ResetCombo();
         }
     }
@@ -42,6 +43,7 @@ public class BallMove : MonoBehaviour
     void OnTriggerEnter(Collider collider){
         if (collider.tag == "Point"){
             ScorePoints();
+            pointScored = true;
         }
     }
 
