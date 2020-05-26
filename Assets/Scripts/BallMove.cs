@@ -23,7 +23,7 @@ public class BallMove : MonoBehaviour
     void Update()
     {
         if(transform.position.y < -1f && !pointScored){
-            GameManager.instance.RestartLevel();
+            GameManager.instance.GameOver();
         }
     }
 

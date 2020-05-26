@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(image))]
+[RequireComponent(typeof(Image))]
 public class TabButtons : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     int tabIndex;
@@ -11,7 +12,7 @@ public class TabButtons : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     TabController controller;
     bool isActive = false;
 
-    Awake(){
+    void Awake(){
         controller = FindObjectOfType<TabController>();
         image = GetComponent<Image>();
     }
@@ -19,7 +20,7 @@ public class TabButtons : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     public void SetIndex(int index){
         tabIndex = index;
     }
-
+    
     public void OnPointerClick(PointerEventData eventData){
         controller.ButtonMouseClick(tabIndex);
     }

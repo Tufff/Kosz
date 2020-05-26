@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
+    public TextMeshProUGUI yourScore;
+    public TextMeshProUGUI highScore;
+    public GameObject tabDisplay;
 
     ScoreDisplay scrDis;
 
@@ -17,6 +22,7 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         scrDis = GameObject.FindWithTag("ScoreDisplay").GetComponent<ScoreDisplay>();
+        Time.timeScale = 1f;
     }
 
     // Start is called before the first frame update
@@ -49,5 +55,14 @@ public class GameManager : MonoBehaviour
 
     public void RestartLevel(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void GameOver(){
+        yourScore.text = score.ToString();
+        if (score > PlayerPrefs.GetInt("HighScore", 0)){
+            PlayerPrefs.SetInt("HighScore", score);
+        }
+        highScore.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
+        tabDisplay.SetActive(true);
     }
 }
