@@ -7,11 +7,18 @@ using TMPro;
 public class ScoreDisplay : MonoBehaviour
 {
     TextMeshProUGUI scoreText;
+    GameOverUI gameOverMenu;
+
+    void Awake()
+    {
+        scoreText = transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
+        gameOverMenu = transform.GetChild(1).gameObject.GetComponent<GameOverUI>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        scoreText = transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
+
     }
 
     // Update is called once per frame
@@ -23,5 +30,12 @@ public class ScoreDisplay : MonoBehaviour
     public void SetScore(int score)
     {
         scoreText.text = score.ToString();
+    }
+
+    public void GameOver()
+    {
+        Time.timeScale = 0f;
+        scoreText.enabled = false;
+        gameOverMenu.GameOver(scoreText.text);
     }
 }
