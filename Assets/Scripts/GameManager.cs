@@ -9,20 +9,18 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
-    public TextMeshProUGUI yourScore;
-    public TextMeshProUGUI highScore;
     public GameObject tabDisplay;
 
     ScoreDisplay scrDis;
 
-    int score = 0;
+    public int score = 0;
     int comboCount = 1;
 
     void Awake()
     {
-        instance = this;
         scrDis = GameObject.FindWithTag("ScoreDisplay").GetComponent<ScoreDisplay>();
-        Time.timeScale = 1f;
+        tabDisplay.SetActive(true);
+        instance = this;
     }
 
     // Start is called before the first frame update
@@ -59,12 +57,8 @@ public class GameManager : MonoBehaviour
     }
 
     public void GameOver(){
-        yourScore.text = score.ToString();
-        if (score > PlayerPrefs.GetInt("HighScore", 0)){
-            PlayerPrefs.SetInt("HighScore", score);
-        }
-        highScore.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
         scrDis.GameOver();
         tabDisplay.SetActive(true);
+        tabDisplay.GetComponent<TabController>().UpdateScorePanel();
     }
 }

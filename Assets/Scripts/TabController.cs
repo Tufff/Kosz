@@ -5,8 +5,8 @@ using UnityEngine.Events;
 
 public class TabController : MonoBehaviour
 {
-    public Transform buttonsPanel;
-    public Transform panelsPanel;
+    Transform buttonsPanel;
+    Transform panelsPanel;
 
     public Color normalColor;
     public Color mouseClickColor;
@@ -18,8 +18,10 @@ public class TabController : MonoBehaviour
     List<TabButtons> buttons = new List<TabButtons>();
     List<Transform> panels = new List<Transform>();
 
-
     void Start(){
+        buttonsPanel = transform.GetChild(0).gameObject.transform;
+        panelsPanel = transform.GetChild(1).gameObject.transform;
+
         for (int i = 0; i < buttonsPanel.transform.childCount; i++)
         {
             GameObject buttonTemp = buttonsPanel.transform.GetChild(i).gameObject;
@@ -34,6 +36,7 @@ public class TabController : MonoBehaviour
         }
         
         ButtonMouseClick(0);
+        gameObject.SetActive(false);
     }
 
     public void ButtonMouseClick(int id){
@@ -57,6 +60,11 @@ public class TabController : MonoBehaviour
                 panels[i].gameObject.SetActive(false);
             }
         }
+    }
+
+    public void UpdateScorePanel()
+    {
+        panels[0].gameObject.GetComponent<ScorePanel>().MakeHighScore();
     }
 
 }
