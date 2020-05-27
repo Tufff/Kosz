@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void RestartLevel(){
-        scrDis.GameOver();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void GameOver(){
@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("HighScore", score);
         }
         highScore.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
+        scrDis.GameOver();
         tabDisplay.SetActive(true);
     }
 }

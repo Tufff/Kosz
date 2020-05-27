@@ -24,6 +24,7 @@ public class BallMove : MonoBehaviour
     {
         if(transform.position.y < -1f && !pointScored){
             GameManager.instance.GameOver();
+            Destroy(gameObject);
         }
     }
 

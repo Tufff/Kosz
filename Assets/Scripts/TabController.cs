@@ -20,7 +20,6 @@ public class TabController : MonoBehaviour
 
 
     void Start(){
-        Time.timeScale = 0f;
         for (int i = 0; i < buttonsPanel.transform.childCount; i++)
         {
             GameObject buttonTemp = buttonsPanel.transform.GetChild(i).gameObject;
