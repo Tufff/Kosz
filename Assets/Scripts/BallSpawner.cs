@@ -31,7 +31,7 @@ public class BallSpawner : MonoBehaviour
         if (doUlt)
         {
             doUlt = false;
-            int whichUlt = Random.Range(1, 6);
+            int whichUlt = Random.Range(1, 7);
             switch (whichUlt)
             {
                 case 1: //double
@@ -48,6 +48,9 @@ public class BallSpawner : MonoBehaviour
                     break;
                 case 5: //double triple
                     StartCoroutine(ManyXStrike(timeBtw, 3, 0.2f));
+                    break;
+                case 6: //quadruple 
+                    StartCoroutine(XStrike(timeBtw, 4, 0.2f));
                     break;
             }
             

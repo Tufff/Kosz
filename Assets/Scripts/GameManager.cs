@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
 
     public int score = 0;
     int comboCount = 1;
+    int money = 0;
+    float moneyEvery10 = 0;
 
     void Awake()
     {
@@ -40,6 +42,11 @@ public class GameManager : MonoBehaviour
 
     public void ScorePoints(){
         score += comboCount;
+        moneyEvery10 += comboCount;
+        if (moneyEvery10/10 >= 1){
+            GameManager.instance.AddMoney();
+            moneyEvery10 = score%10;
+        }
         comboCount++;
         if (comboCount > 5){
             comboCount = 5;
@@ -60,5 +67,10 @@ public class GameManager : MonoBehaviour
         scrDis.GameOver();
         tabDisplay.SetActive(true);
         tabDisplay.GetComponent<TabController>().UpdateScorePanel();
+    }
+
+    public void AddMoney(){
+        money += 1;
+        scrDis.SetMoney(money);
     }
 }
