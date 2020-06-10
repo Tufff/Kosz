@@ -53,13 +53,16 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (scrDis == null)
-        {
-            scrDis = GameObject.FindWithTag("ScoreDisplay").GetComponent<ScoreDisplay>();
-        }
-        if(tabDisplay == null)
-        {
-            tabDisplay = GameObject.FindWithTag("ScoreDisplay").transform.GetChild(2).gameObject;
+        if (SceneManager.GetActiveScene().buildIndex == 1){
+            if (scrDis == null)
+            {
+                scrDis = GameObject.FindWithTag("ScoreDisplay").GetComponent<ScoreDisplay>();
+            }
+            if(tabDisplay == null)
+            {
+                tabDisplay = GameObject.FindWithTag("ScoreDisplay").transform.GetChild(2).gameObject;
+                scrDis.SetMoney(money);
+            }
         }
     }
 
@@ -93,10 +96,15 @@ public class GameManager : MonoBehaviour
     }
 
     public void GameOver(){
+        spawner.timeBtw = 1f;
+        ballCounter = 0;
+        ResetCombo();
         PlayerPrefs.SetInt("money", money);
         scrDis.GameOver();
         tabDisplay.SetActive(true);
         tabDisplay.GetComponent<TabController>().UpdateScorePanel();
+        score = 0;
+        moneyEvery10 = 0;
     }
 
     public void AddMoney(){

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine.SceneManagement;
 
 public class BallMeshHolder : MonoBehaviour
 {
@@ -52,17 +53,19 @@ public class BallMeshHolder : MonoBehaviour
 
     void SkinInit()
     {
-        if(skinPanel == null)
-        {
-            skinPanel = GameObject.FindWithTag("ScoreDisplay").transform.GetChild(2).transform.GetChild(1).transform.GetChild(1).gameObject;
-            
-            for (int i = 0; i < skinPanel.transform.childCount; i++)
+        if (SceneManager.GetActiveScene().buildIndex == 1){
+            if(skinPanel == null)
             {
-                SkinScript skinScr = skinPanel.transform.GetChild(i).gameObject.GetComponent<SkinScript>();
-                skinScr.Init(i);
-                if (unlocked[i])
+                skinPanel = GameObject.FindWithTag("ScoreDisplay").transform.GetChild(2).transform.GetChild(1).transform.GetChild(1).gameObject;
+                
+                for (int i = 0; i < skinPanel.transform.childCount; i++)
                 {
-                    skinScr.Unlock();
+                    SkinScript skinScr = skinPanel.transform.GetChild(i).gameObject.GetComponent<SkinScript>();
+                    skinScr.Init(i);
+                    if (unlocked[i])
+                    {
+                        skinScr.Unlock();
+                    }
                 }
             }
         }
