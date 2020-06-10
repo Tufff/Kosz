@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 2d95beecf2fd13b4abc2f3dd98f35b83
+  - enabled: 1
+    path: Assets/Scenes/Bulba.unity
+    guid: 73d4273591e002d4cb9398c693a4c553
+  - enabled: 1
     path: Assets/Scenes/Zolnierz.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}

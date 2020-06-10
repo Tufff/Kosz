@@ -10,7 +10,7 @@ public class BallSpawner : MonoBehaviour
     bool done;
     bool doUlt;
 
-    public float timeBtw = 2f;
+    public float timeBtw = 1f;
     float screenRange = 1f;
 
     // Start is called before the first frame update
