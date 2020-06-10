@@ -23,7 +23,7 @@ public class BallMeshHolder : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        skinPanel = GameObject.FindWithTag("ScoreDisplay").transform.GetChild(1).transform.GetChild(1).transform.GetChild(1).gameObject;
+        skinPanel = GameObject.FindWithTag("ScoreDisplay").transform.GetChild(2).transform.GetChild(1).transform.GetChild(1).gameObject;
         unlocked = LoadData();
         if(unlocked == null)
         {
@@ -54,7 +54,7 @@ public class BallMeshHolder : MonoBehaviour
     {
         if(skinPanel == null)
         {
-            skinPanel = GameObject.FindWithTag("ScoreDisplay").transform.GetChild(1).transform.GetChild(1).transform.GetChild(1).gameObject;
+            skinPanel = GameObject.FindWithTag("ScoreDisplay").transform.GetChild(2).transform.GetChild(1).transform.GetChild(1).gameObject;
             
             for (int i = 0; i < skinPanel.transform.childCount; i++)
             {

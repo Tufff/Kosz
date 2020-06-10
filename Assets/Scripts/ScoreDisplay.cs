@@ -10,7 +10,7 @@ public class ScoreDisplay : MonoBehaviour
     TextMeshProUGUI moneyText;
     GameOverUI gameOverMenu;
 
-    void Start()
+    void Awake()
     {
         scoreText = transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
         moneyText = transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
