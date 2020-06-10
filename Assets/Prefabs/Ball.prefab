@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 57890521f6fa57c44aaefd13e43992a9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -126,3 +126,5 @@ MonoBehaviour:
   startForceUp: 18
   startForceFoward: 12.8
   autodestructionTime: 4
+  normalBall: {fileID: 2100000, guid: b9fc9b2bad6d36841823ccdfbcfdd209, type: 2}
+  superBall: {fileID: 2100000, guid: 68d1d215d8c669149886f61cce2cf4a0, type: 2}
