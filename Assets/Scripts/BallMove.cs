@@ -11,9 +11,13 @@ public class BallMove : MonoBehaviour
     public float autodestructionTime = 5f;
     bool pointScored = false;
 
+    MeshFilter ballMeshFilter;
+
     // Start is called before the first frame update
     void Start()
     {
+        ballMeshFilter = GetComponent<MeshFilter>();
+        ballMeshFilter.mesh = BallMeshHolder.instance.TakeCurrentMesh();
         rb = GetComponent<Rigidbody>();
         rb.AddForce(0, startForceUp, -startForceFoward, ForceMode.Impulse);
         StartCoroutine(Suicide(autodestructionTime));

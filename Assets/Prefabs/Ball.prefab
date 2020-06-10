@@ -126,4 +126,3 @@ MonoBehaviour:
   startForceUp: 18
   startForceFoward: 12.8
   autodestructionTime: 4
-  manager: {fileID: 0}

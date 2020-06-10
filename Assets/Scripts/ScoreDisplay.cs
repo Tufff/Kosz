@@ -9,7 +9,7 @@ public class ScoreDisplay : MonoBehaviour
     TextMeshProUGUI scoreText;
     GameOverUI gameOverMenu;
 
-    void Awake()
+    void Start()
     {
         scoreText = transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
     }

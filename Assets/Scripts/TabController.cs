@@ -18,7 +18,7 @@ public class TabController : MonoBehaviour
     List<TabButtons> buttons = new List<TabButtons>();
     List<Transform> panels = new List<Transform>();
 
-    void Start(){
+    void Awake(){
         buttonsPanel = transform.GetChild(0).gameObject.transform;
         panelsPanel = transform.GetChild(1).gameObject.transform;
 

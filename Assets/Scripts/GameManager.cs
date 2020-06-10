@@ -9,7 +9,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
-    public GameObject tabDisplay;
+    GameObject tabDisplay;
 
     ScoreDisplay scrDis;
 
@@ -18,9 +18,19 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+
         scrDis = GameObject.FindWithTag("ScoreDisplay").GetComponent<ScoreDisplay>();
+        tabDisplay = GameObject.FindWithTag("ScoreDisplay").transform.GetChild(1).gameObject;
         tabDisplay.SetActive(true);
-        instance = this;
     }
 
     // Start is called before the first frame update
@@ -34,8 +44,15 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("Score: " + score);
-        //Debug.Log(comboCount);
+        if (scrDis == null)
+        {
+            scrDis = GameObject.FindWithTag("ScoreDisplay").GetComponent<ScoreDisplay>();
+            
+        }
+        if(tabDisplay == null)
+        {
+            tabDisplay = GameObject.FindWithTag("ScoreDisplay").transform.GetChild(1).gameObject;
+        }
     }
 
     public void ScorePoints(){
@@ -54,6 +71,9 @@ public class GameManager : MonoBehaviour
 
     public void RestartLevel(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
+        score = 0;
+        comboCount = 1;
     }
 
     public void GameOver(){
